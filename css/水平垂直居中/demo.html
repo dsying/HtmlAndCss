@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css实现水平垂直居中</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <fieldset id="demo1">
+        <legend>行内元素的水平居中</legend>
+        <p>要实现行内元素（span、a等）的水平居中，只需把行内元素包裹在块级父层元素（div、li、p等）中，并且在父层元素CSS设置 text-align:center</p>
+        <div class="container">
+            <span id="center1">#center1</span>
+        </div>
+    </fieldset>
+
+    <fieldset id="demo2">
+        <legend>块级元素的水平居中</legend>
+        <p>要实现块状元素（display:block）的水平居中，我们只需要将它的左右外边距margin-left和margin-right设置为auto，即可实现块状元素的居中</p>
+        <div class="container2">
+            <div id="center2">#center2</div>
+        </div>
+    </fieldset>
+
+    <fieldset id="demo3">
+        <legend>多个块级元素的水平居中</legend>
+        <p>要实现多个水平排列的块状元素的水平居中，传统的方法是将要水平排列的块状元素设为display:inline-block，然后在父级元素上设置text-align:center</p>
+        <div class="container3">
+            <div class="center3">.center3</div>
+            <div class="center3">.center3</div>
+            <div class="center3">.center3</div>
+        </div>
+    </fieldset>
+
+
+    <fieldset id="demo4">
+        <legend>使用flexbox实现多个块状元素的水平居中</legend>
+        <p>父容器：display:flex;justify-content:center;align-items:center</p>
+        <div class="container4">
+            <div class="center4">.center4</div>
+            <div class="center4">.center4</div>
+            <div class="center4">.center4</div>
+        </div>
+    </fieldset>
+
+    <h2>已知高度宽度元素的水平垂直居中</h2>
+    <fieldset id="demo5">
+        <legend>方法1：绝对定位与负外边距实现</legend>
+        <pre>
+            #container{
+                position:relative;
+            }
+
+            #center{
+                width:100px;
+                height:100px;
+                position:absolute;
+                top:50%;
+                left:50%;
+                margin:-50px 0 0 -50px;
+            }
+        </pre>
+        <div class="container5">
+            <div class="center5">.center5</div>
+        </div>
+    </fieldset>
+
+    <fieldset id="demo6">
+        <legend>方法2：绝对定位与margin</legend>
+        <p>这种方法也是利用绝对定位与margin，但是无需知道被垂直居中元素的高和宽</p>
+        <pre>
+            #container{
+                position:relative;
+            }
+
+            #center{
+                position:absolute;
+                margin:auto;
+                top:0;
+                bottom:0;
+                left:0;
+                right:0;
+            }
+        </pre>
+        <div class="container6">
+            <div class="center6">.center6</div>
+        </div>
+    </fieldset>
+
+    <fieldset id="demo7">
+        <legend>方法3：绝对定位与calc</legend>
+        <p>此方法与方法1原理相同，因为绝对定位 是左上角定位的，所以左和上方向要让出元素本身宽和高的一般</p>
+        <pre>
+            #container{
+                position:relative;
+            }
+            #center{
+                width: 100px;
+                height: 100px;
+                background: #666;
+                position: absolute;
+                left: calc(50% - 50px);
+                top: calc(50% - 50px);
+            }
+
+        </pre>
+        <div class="container7">
+            <div class="center7">.center7</div>
+        </div>
+    </fieldset>
+
+    <h2>未知高度和宽度元素的水平垂直居中</h2>
+    <fieldset id="demo8">
+        <legend>方法1：当要被居中的元素是inline或者inline-block元素</legend>
+        <p>当要被居中的元素是inline或者inline-block的时候，可以巧妙的将父级容器设置为display:table-cell，配合text-align:center和vertical-align:middle即可以实现水平垂直居中</p>
+        <pre>
+            #container{
+                display:table-cell;
+                text-align:center;
+                vertical-align:middle;
+            }
+        </pre>
+        <div class="container8">
+            <div class="center8">.center8</div>
+        </div>
+    </fieldset>
+
+
+
+    <fieldset id="demo9">
+        <legend>方法2：利用Css3的transform</legend>
+        <p>利用Css3的transform，可以轻松的在未知元素的高宽的情况下实现元素的垂直居中</p>
+        <pre>
+            #container{
+                position:relative;
+            }
+
+            #center{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </pre>
+        <div class="container9">
+            <div class="center9">.center9</div>
+        </div>
+    </fieldset>
+
+    <fieldset id="demo10">
+        <legend>方法3：flex布局轻松解决</legend>
+        <p>使用flex布局，无需绝对定位等改变布局的操作，可以轻松实现元素的水平垂直居中。</p>
+        <pre>
+            #container{
+                display:flex;
+                justify-content:center;
+                align-items: center;
+            }
+
+            #center{
+
+            }
+        </pre>
+        <div class="container10">
+            <div class="center10">.center10</div>
+        </div>
+    </fieldset>
+</body>
+</html>
